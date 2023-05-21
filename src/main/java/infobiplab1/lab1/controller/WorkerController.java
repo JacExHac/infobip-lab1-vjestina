@@ -22,7 +22,6 @@ public class WorkerController {
 
     @GetMapping
     public List<Worker> getAllWorkers() {
-        System.out.println("Evo ziv sam");
         return workerService.getAllWorkers();
     }
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkerService {
@@ -13,7 +14,13 @@ public class WorkerService {
     @Autowired
     private WorkerRepository workerRepository;
     public Worker getWorkerById(Long id) {
-        return workerRepository.getById(id);
+        Optional<Worker> worker = workerRepository.findById(id);
+
+        if(worker.isPresent()) {
+            return worker.get();
+        } else {
+            return null;
+        }
     }
 
     public List<Worker> getAllWorkers() {
